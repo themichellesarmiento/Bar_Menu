@@ -8,10 +8,15 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserModel | null>(null);
 
+  const setFavoriteCategory = (category: string) => {
+    setUser((prev) => prev ? { ...prev, favoriteCategory: category } : prev)
+  }
+
   return (
     <AuthContext.Provider value={{
       user,
-      setUser
+      setUser,
+      setFavoriteCategory
     }}>{children}</AuthContext.Provider>
   )
 }

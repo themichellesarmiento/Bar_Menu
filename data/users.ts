@@ -1,6 +1,6 @@
-import { UserInfo } from "@/types/user";
+import { UserModel } from "@/types/user";
 
-export const users: UserInfo[] = [
+export const users: UserModel[] = [
   {
     username: 'Vlad',
     password: 'phunter1',
@@ -12,8 +12,8 @@ export const users: UserInfo[] = [
     favoriteCategory: 'Non_alcoholic'
   },
   {
-    username: 'MichelleChic',
-    password: 'justme',
+    username: 'Michelle',
+    password: '925',
     favoriteCategory: 'Cocktail'
   }
 

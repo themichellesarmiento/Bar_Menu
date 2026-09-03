@@ -1,9 +1,12 @@
 import { Drink } from '@/types/drinks'
+import Image from 'next/image'
 
 const DrinkItem = ({ drink }: { drink: Drink }) => {
   return (
     <div className='max-w-xs mx-auto rounded-xl overflow-hidden bg-text-primary/80 border border-neutral-800 shadow-lg shadow-black/40'>
-      <img src={drink.image} alt={drink.name} className='w-full h-full object-cover' />
+      <div className='relative aspect-square'>
+      <Image src={drink.image ?? '/placeholder.png'} fill alt={drink.name} className='object-cover' />
+      </div>
       <div className='p-5'>
         <h2 className='text-xl font-semibold text-accent-three text-center'>{drink.name}</h2>
         <div className='mt-3 flex items-center gap-2 flex-wrap justify-evenly'>

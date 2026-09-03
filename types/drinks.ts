@@ -3,14 +3,14 @@ export interface DrinkDataApi {
   strDrink: string,
   strCategory: string,
   strAlcoholic: string,
-  strDrinkThumb?: string
+  strDrinkThumb: string
 }
 
 export interface Drink {
   id: number,
   name: string,
-  category: string,
-  type: string,
+  category: string | null,
+  type?: string,
   image?: string
 }
 
