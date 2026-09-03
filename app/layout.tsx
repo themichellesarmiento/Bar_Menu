@@ -31,8 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AuthProvider>
           <Header />
           <main className='flex-1'>
-            <LogInWrapper />
-            {children}
+            <LogInWrapper children={children} />
             <div id='modal' />
           </main>
           <Footer />

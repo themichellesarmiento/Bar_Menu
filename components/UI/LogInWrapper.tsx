@@ -3,15 +3,23 @@
 import { useAuthContext } from "@/contexts/AuthContext";
 import { AuthContextType } from "@/types/user";
 import Navigation from "../Layout/Navigation";
+import { ReactNode } from "react";
+import DefaultContent from "../Layout/DefaultContent";
 
-const LogInWrapper = () => {
+const LogInWrapper = ({ children }: { children: ReactNode }) => {
   const { user } = useAuthContext() as AuthContextType
+
   return (
     <>
-      {user &&
+      {user ?
         <>
-          <Navigation/>
-        </>}
+          <Navigation />
+          {children}
+        </> :
+        <>
+          <DefaultContent />
+        </>
+      }
     </>
   )
 }

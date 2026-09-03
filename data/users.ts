@@ -15,6 +15,11 @@ export const users: UserModel[] = [
     username: 'Michelle',
     password: '925',
     favoriteCategory: 'Cocktail'
+  },
+  {
+    username: 'Fin',
+    password: '123',
+    favoriteCategory: null
   }
 
 ]

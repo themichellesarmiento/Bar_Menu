@@ -28,13 +28,12 @@ const CategoryDetail = ({ params }: { params: Promise<{ category: string }> }) =
       <div className='flex items-center justify-between gap-3 mb-6 flex-wrap'>
         <h1 className='text-xl md:text-2xl uppercase font-bold'>{decodeURIComponent(categoryName)}</h1>
         {user && (
-          <button onClick={()=>setFavoriteCategory(categoryName)}
-          disabled={isFavorite}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-              isFavorite
+          <button onClick={() => setFavoriteCategory(categoryName)}
+            disabled={isFavorite}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${isFavorite
                 ? 'bg-accent-three text-background cursor-default'
                 : 'border border-accent-three text-accent-three hover:bg-accent-three/10'
-            }`}>
+              }`}>
             {isFavorite ? 'Favorite category' : 'Set as favorite'}
           </button>
         )}
