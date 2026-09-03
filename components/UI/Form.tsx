@@ -12,7 +12,7 @@ interface LogInFormModalProps {
 }
 
 const Form = ({ open, handleClose }: LogInFormModalProps) => {
-  const { setUser } = useAuthContext() as AuthContextType
+  const { logIn } = useAuthContext() as AuthContextType
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [formError, setFormError] = useState<string | null>(null)
@@ -41,7 +41,7 @@ const Form = ({ open, handleClose }: LogInFormModalProps) => {
       return;
     }
 
-    setUser(loggedInUser);
+    logIn(loggedInUser);
     handleClose(false);
 
   }

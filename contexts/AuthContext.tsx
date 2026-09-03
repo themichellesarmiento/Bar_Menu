@@ -12,11 +12,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser((prev) => prev ? { ...prev, favoriteCategory: category } : prev)
   }
 
+  const logIn = (loggedInUser: UserModel) => setUser(loggedInUser);
+  const logOut = () => setUser(null);
+
   return (
     <AuthContext.Provider value={{
       user,
       setUser,
-      setFavoriteCategory
+      setFavoriteCategory,
+      logIn,
+      logOut
     }}>{children}</AuthContext.Provider>
   )
 }
