@@ -9,7 +9,7 @@ export const users: UserModel[] = [
   {
     username: 'KhanTheGreat',
     password: 'phunter2',
-    favoriteCategory: 'Non_alcoholic'
+    favoriteCategory: 'Ordinary Drink'
   },
   {
     username: 'Michelle',

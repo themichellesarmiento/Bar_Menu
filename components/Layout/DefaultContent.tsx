@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useHttp } from "@/hooks/useHttp";
 import { DrinkDataApi, normalizeDrinkApi } from "@/types/drinks";
-import Form from "../UI/Form";
+import Form from "../Form";
 import DrinkItem from "../DrinkItem";
 
 const DefaultContent = () => {

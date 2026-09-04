@@ -2,7 +2,7 @@
 
 import { useState, SetStateAction } from 'react'
 import { users } from '@/data/users'
-import Modal from './Modal'
+import Modal from '@/components/UI/Modal'
 import { useAuthContext } from '@/contexts/AuthContext'
 import { AuthContextType } from '@/types/user'
 

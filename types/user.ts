@@ -6,7 +6,6 @@ export interface UserModel {
 
 export interface AuthContextType {
   user: UserModel | null,
-  setUser: (user: UserModel) => void,
   setFavoriteCategory: (category: string) => void
   logIn: (user: UserModel) => void
   logOut: () => void

@@ -5,7 +5,6 @@ import { useHttp } from "@/hooks/useHttp";
 import { DrinkDataApi, normalizeDrinkApi } from "@/types/drinks";
 import { AuthContextType } from "@/types/user";
 import { fromSlugToQueryValue } from "@/utils/categoryQuery";
-
 import Link from "next/link";
 import { use } from "react";
 

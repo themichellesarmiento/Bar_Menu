@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 import DefaultContent from "../Layout/DefaultContent";
 
 const LogInWrapper = ({ children }: { children: ReactNode }) => {
-  const { user ,logOut } = useAuthContext() as AuthContextType
+  const { user, logOut } = useAuthContext() as AuthContextType
 
   return (
     <>
@@ -15,7 +15,7 @@ const LogInWrapper = ({ children }: { children: ReactNode }) => {
         <>
           <Navigation />
           <div className='text-right p-4'>
-          <button onClick={logOut} className='hover:underline'>Log Out</button>
+            <button onClick={logOut} className='hover:underline'>Log Out</button>
           </div>
           {children}
         </> :
