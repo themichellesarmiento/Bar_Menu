@@ -11,7 +11,7 @@ export interface Drink {
   name: string,
   category: string | null,
   type?: string,
-  image?: string | null
+  image: string | null
 }
 
 export const normalizeDrinkApi = (drink: DrinkDataApi): Drink => {

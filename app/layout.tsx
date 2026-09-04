@@ -5,6 +5,7 @@ import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { AuthProvider } from "@/contexts/AuthContext";
 import LogInWrapper from "@/components/Layout/LogInWrapper";
+import { CartProvider } from "@/contexts/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +30,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <AuthProvider>
-          <Header />
-          <main className='flex-1'>
-            <LogInWrapper children={children} />
-            <div id='modal' />
-          </main>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <main className='flex-1'>
+              <LogInWrapper children={children} />
+              <div id='modal' />
+            </main>
+            <Footer />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>

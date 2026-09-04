@@ -1,16 +1,19 @@
 'use client'
 
+import { useCartContext } from '@/contexts/CartContext';
+import { CartContextType } from '@/types/cart';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/', label: 'Home' },
   { href: '/categories', label: 'Categories' },
-  { href: '/profile', label: 'Cart' },
+  { href: '/cart', label: 'Cart' },
 ];
 
 const Navigation = () => {
   const pathname = usePathname();
+  const { cartItems } = useCartContext() as CartContextType
 
   return (
     <nav className='text-base md:text-lg p-4'>
@@ -23,7 +26,7 @@ const Navigation = () => {
                 ? 'bg-accent-three text-white'
                 : 'hover:bg-accent-three/20'
               }`}>
-              {label}
+              {label === 'Cart' ? `Cart (${cartItems.length})` : label}
             </Link>
           );
         })}
