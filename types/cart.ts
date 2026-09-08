@@ -10,5 +10,4 @@ export interface CartContextType {
   addToCart: (item: CartItem) => void
   removeFromCart: (id: string) => void
   isInCart: (id: string) => boolean
-  clearCart: () => void
 }
