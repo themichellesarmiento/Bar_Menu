@@ -22,12 +22,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return cartItems.some((c) => c.id === id)
   }
 
+  const clearCart = () => setCartItems([]);
+
   return (
     <CartContext.Provider value={{
       cartItems,
       addToCart,
       removeFromCart,
-      isInCart
+      isInCart,
+      clearCart
     }}>
       {children}
     </CartContext.Provider>

@@ -13,7 +13,7 @@ const DefaultContent = () => {
 
   return (
     <div className='px-4 py-2 text-right'>
-      <button className='hover:underline' onClick={() => setShowLogIn(true)}>Log in to see your saved order</button>
+      <button className='hover:underline' onClick={() => setShowLogIn(true)}>Log in for personalized picks!</button>
       {showLogin && <Form open={showLogin} handleClose={setShowLogIn} />}
       <h1 className='font-semibold uppercase text-lg md:text-2xl my-2 text-center'>Shots of the Day!</h1>
       {randomDrink && <DrinkItem drink={randomDrink} />}

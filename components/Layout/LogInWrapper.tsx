@@ -5,9 +5,17 @@ import { AuthContextType } from "@/types/user";
 import Navigation from "../Layout/Navigation";
 import { ReactNode } from "react";
 import DefaultContent from "../Layout/DefaultContent";
+import { useCartContext } from "@/contexts/CartContext";
+import { CartContextType } from "@/types/cart";
 
 const LogInWrapper = ({ children }: { children: ReactNode }) => {
   const { user, logOut } = useAuthContext() as AuthContextType
+  const { clearCart } = useCartContext() as CartContextType
+
+  const handleLogout = () => {
+    logOut();
+    clearCart();
+  }
 
   return (
     <>
@@ -15,7 +23,7 @@ const LogInWrapper = ({ children }: { children: ReactNode }) => {
         <>
           <Navigation />
           <div className='text-right p-4'>
-            <button onClick={logOut} className='hover:underline'>Log Out</button>
+            <button onClick={handleLogout} className='hover:underline'>Log Out</button>
           </div>
           {children}
         </> :

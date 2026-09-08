@@ -62,8 +62,8 @@ const DrinkDetail = ({ params }: { params: Promise<{ id: string }> }) => {
 
       <h2 className='font-semibold text-lg md:text-xl my-4'>Ingredients:</h2>
       <ul className='list-disc list-inside space-y-1'>
-        {drink.ingredients.map(ing => (
-          <li key={ing.name}>
+        {drink.ingredients.map((ing ,index)=> (
+          <li key={index}>
             {ing.name}{ing.measure ? ` — ${ing.measure}` : ''}
           </li>
         ))}
