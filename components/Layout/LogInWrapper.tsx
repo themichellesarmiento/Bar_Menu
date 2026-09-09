@@ -5,9 +5,16 @@ import { AuthContextType } from "@/types/user";
 import Navigation from "../Layout/Navigation";
 import { ReactNode } from "react";
 import DefaultContent from "../Layout/DefaultContent";
+import { useRouter } from "next/navigation";
 
 const LogInWrapper = ({ children }: { children: ReactNode }) => {
   const { user, logOut } = useAuthContext() as AuthContextType
+  const router = useRouter();
+
+  const handleLogOut = () => {
+    logOut();
+    router.push('/')
+  }
 
   return (
     <>
@@ -15,7 +22,7 @@ const LogInWrapper = ({ children }: { children: ReactNode }) => {
         <>
           <Navigation />
           <div className='text-right p-4'>
-            <button onClick={logOut} className='hover:underline'>Log Out</button>
+            <button onClick={handleLogOut} className='hover:underline'>Log Out</button>
           </div>
           {children}
         </> :
