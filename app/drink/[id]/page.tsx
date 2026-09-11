@@ -6,12 +6,15 @@ import Image from 'next/image';
 import { use } from 'react';
 import { useCartContext } from '@/contexts/CartContext';
 import { CartContextType } from '@/types/cart';
+import { useToastContext } from '@/contexts/UI/ToastContext';
+import { ToastContextType } from '@/types/toast';
 
 const DrinkDetail = ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = use(params);
   const { data, isLoading, error } = useHttp<{ drinks: DrinkDetailsDataApi[] | null }>(`${process.env.NEXT_PUBLIC_API_ENDPOINT}lookup.php?i=${id}`)
 
   const { addToCart, removeFromCart, isInCart } = useCartContext() as CartContextType;
+  const { showToast } = useToastContext() as ToastContextType
 
   if (isLoading) return <p className='p-4'>Loading...</p>
   if (error) return <p className='p-4 text-accent-two'>Could not load this drink</p>
@@ -26,6 +29,7 @@ const DrinkDetail = ({ params }: { params: Promise<{ id: string }> }) => {
   const handleCartToggle = () => {
     if (drinkInCart) {
       removeFromCart(drink.id)
+      showToast(`Removed ${drink.name} from cart`);
     } else {
       addToCart(
         {
@@ -34,6 +38,7 @@ const DrinkDetail = ({ params }: { params: Promise<{ id: string }> }) => {
           image: drink!.image,
           category: drink.category
         });
+      showToast(`Added ${drink.name} to cart`);
     }
   }
 
@@ -62,7 +67,7 @@ const DrinkDetail = ({ params }: { params: Promise<{ id: string }> }) => {
 
       <h2 className='font-semibold text-lg md:text-xl my-4'>Ingredients:</h2>
       <ul className='list-disc list-inside space-y-1'>
-        {drink.ingredients.map((ing ,index)=> (
+        {drink.ingredients.map((ing, index) => (
           <li key={index}>
             {ing.name}{ing.measure ? ` — ${ing.measure}` : ''}
           </li>

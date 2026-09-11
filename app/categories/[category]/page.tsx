@@ -1,8 +1,10 @@
 'use client'
 
 import { useAuthContext } from "@/contexts/AuthContext";
+import { useToastContext } from "@/contexts/UI/ToastContext";
 import { useHttp } from "@/hooks/useHttp";
 import { DrinkDataApi, normalizeDrinkApi } from "@/types/drinks";
+import { ToastContextType } from "@/types/toast";
 import { AuthContextType } from "@/types/user";
 import { fromSlugToQueryValue } from "@/utils/categoryQuery";
 import Link from "next/link";
@@ -11,6 +13,7 @@ import { use } from "react";
 const CategoryDetail = ({ params }: { params: Promise<{ category: string }> }) => {
   const { category } = use(params);
   const { user, setFavoriteCategory } = useAuthContext() as AuthContextType;
+  const { showToast } = useToastContext() as ToastContextType
 
   const categoryName = fromSlugToQueryValue(category);
 
@@ -22,16 +25,21 @@ const CategoryDetail = ({ params }: { params: Promise<{ category: string }> }) =
   const categoryDrinks = data?.drinks?.map(normalizeDrinkApi) ?? [];
   const isFavorite = user?.favoriteCategory === categoryName;
 
+  const handleSetFavorite = () => {
+    setFavoriteCategory(categoryName)
+    showToast(`${categoryName} set as your favorite category`)
+  }
+
   return (
     <div className='p-6'>
       <div className='flex items-center justify-between gap-3 mb-6 flex-wrap'>
         <h1 className='text-xl md:text-2xl uppercase font-bold'>{decodeURIComponent(categoryName)}</h1>
         {user && (
-          <button onClick={() => setFavoriteCategory(categoryName)}
+          <button onClick={handleSetFavorite}
             disabled={isFavorite}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${isFavorite
-                ? 'bg-accent-three text-background cursor-default'
-                : 'border border-accent-three text-accent-three hover:bg-accent-three/10'
+              ? 'bg-accent-three text-background cursor-default'
+              : 'border border-accent-three text-accent-three hover:bg-accent-three/10'
               }`}>
             {isFavorite ? 'Favorite category' : 'Set as favorite'}
           </button>
